@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+var startPage = "ABAC.html";
+const files = ["/index.html","/CLS.html","/RLS.html","/secrets.html","/ABAC.html","/Grant & Revoke.html"];
+if (location.hash.length > 1) {
+  const potentialStartPage = decodeURI(location.hash.trim().substring(1))
+  if (files.includes("/" + potentialStartPage)) {
+    startPage = potentialStartPage;
+  }
+}
+</script>
+<style>
+li {
+  list-style: none;
+  margin-left: -20px;
+}
+</style>
+<meta name="databricks-html-version" content="1">
+<title>Security - Databricks</title>
+
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="robots" content="nofollow, noindex">
+<meta http-equiv="Content-Language" content="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF8">
+
+<link rel="stylesheet" type="text/css" href="https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/css/notebook-main.css">
+<link rel="icon" type="image/png" href="https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/login/favicon.ico"/>
+<script>window.__STATIC_SETTINGS__ = {"sandboxForSandboxFrame":"allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms allow-same-origin allow-downloads","databricks.fe.deploymentMode":"production","deploymentMode":"production","staticNotebookResourceUrl_new":"https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/","databricks.fe.eda.sandboxForSandboxFrame":"allow-scripts allow-popups allow-popups-to-escape-sandbox allow-forms allow-same-origin allow-downloads","enableResultsDownloading":true,"disableExportNotebook":false,"enableNotebookTableClipboard":true,"enableExportNotebook":true,"staticNotebookResourceUrl":"https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/","disableResultsDownloading":true};</script>
+<script>var __DATABRICKS_NOTEBOOK_MODEL = 'JTdCJTIydmVyc2lvbiUyMiUzQSUyMk5vdGVib29rVjElMjIlMkMlMjJvcmlnSWQlMjIlM0EwJTJDJTIybmFtZSUyMiUzQSUyMlNlY3VyaXR5JTIyJTJDJTIybGFuZ3VhZ2UlMjIlM0ElMjIlMjIlMkMlMjJjb21tYW5kcyUyMiUzQSU1QiU3QiUyMnZlcnNpb24lMjIlM0ElMjJDb21tYW5kVjElMjIlMkMlMjJvcmlnSWQlMjIlM0EwJTJDJTIyZ3VpZCUyMiUzQSUyMmIyMzgwMjhmLWJhOTctNDk3MC1hZTYyLWVjOWI3MGM5ZmZiNCUyMiUyQyUyMnN1YnR5cGUlMjIlM0ElMjJjb21tYW5kJTIyJTJDJTIyY29tbWFuZFR5cGUlMjIlM0ElMjJhdXRvJTIyJTJDJTIycG9zaXRpb24lMjIlM0EwLjAlMkMlMjJjb21tYW5kJTIyJTNBJTIyJTI1bWQlMjAlMjMlMjMlMjMlMjMlMjAlM0NhJTIwaHJlZiUzRCU1QyUyMkFCQUMuaHRtbCU1QyUyMiUzRUFCQUMlM0MlMkZhJTNFJTVDbiUyMyUyMyUyMyUyMyUyMCUzQ2ElMjBocmVmJTNEJTVDJTIyQ0xTLmh0bWwlNUMlMjIlM0VDTFMlM0MlMkZhJTNFJTVDbiUyMyUyMyUyMyUyMyUyMCUzQ2ElMjBocmVmJTNEJTVDJTIyR3JhbnQlMjUyMCUyNTI2JTI1MjBSZXZva2UuaHRtbCU1QyUyMiUzRUdyYW50JTIwJTI2YW1wJTNCJTIwUmV2b2tlJTNDJTJGYSUzRSU1Q24lMjMlMjMlMjMlMjMlMjAlM0NhJTIwaHJlZiUzRCU1QyUyMlJMUy5odG1sJTVDJTIyJTNFUkxTJTNDJTJGYSUzRSU1Q24lMjMlMjMlMjMlMjMlMjAlM0NhJTIwaHJlZiUzRCU1QyUyMmluZGV4Lmh0bWwlNUMlMjIlM0VpbmRleCUzQyUyRmElM0UlNUNuJTIzJTIzJTIzJTIzJTIwJTNDYSUyMGhyZWYlM0QlNUMlMjJzZWNyZXRzLmh0bWwlNUMlMjIlM0VzZWNyZXRzJTNDJTJGYSUzRSUyMiUyQyUyMmNvbW1hbmRWZXJzaW9uJTIyJTNBMSUyQyUyMnN0YXRlJTIyJTNBJTIyZmluaXNoZWQlMjIlMkMlMjJyZXN1bHRzJTIyJTNBbnVsbCUyQyUyMnJlc3VsdERiZnNTdGF0dXMlMjIlM0FudWxsJTJDJTIycmVzdWx0RGJmc0Vycm9yTWVzc2FnZSUyMiUzQW51bGwlMkMlMjJlcnJvclN1bW1hcnklMjIlM0FudWxsJTJDJTIyZXJyb3JUcmFjZVR5cGUlMjIlM0FudWxsJTJDJTIyZXJyb3IlMjIlM0FudWxsJTJDJTIyZXJyb3JEZXRhaWxzJTIyJTNBbnVsbCUyQyUyMmJhc2VFcnJvckRldGFpbHMlMjIlM0FudWxsJTJDJTIyd29ya2Zsb3dzJTIyJTNBJTVCJTVEJTJDJTIyc3RhcnRUaW1lJTIyJTNBMCUyQyUyMnN1Ym1pdFRpbWUlMjIlM0EwJTJDJTIyZmluaXNoVGltZSUyMiUzQTAlMkMlMjJjb2xsYXBzZWQlMjIlM0FmYWxzZSUyQyUyMmJpbmRpbmdzJTIyJTNBJTdCJTdEJTJDJTIyaW5wdXRXaWRnZXRzJTIyJTNBJTdCJTdEJTJDJTIyZGlzcGxheVR5cGUlMjIlM0ElMjJ0YWJsZSUyMiUyQyUyMndpZHRoJTIyJTNBJTIyYXV0byUyMiUyQyUyMmhlaWdodCUyMiUzQSUyMmF1dG8lMjIlMkMlMjJ4Q29sdW1ucyUyMiUzQW51bGwlMkMlMjJ5Q29sdW1ucyUyMiUzQW51bGwlMkMlMjJwaXZvdENvbHVtbnMlMjIlM0FudWxsJTJDJTIycGl2b3RBZ2dyZWdhdGlvbiUyMiUzQW51bGwlMkMlMjJ1c2VDb25zaXN0ZW50Q29sb3JzJTIyJTNBZmFsc2UlMkMlMjJjdXN0b21QbG90T3B0aW9ucyUyMiUzQSU3QiU3RCUyQyUyMmNvbW1lbnRUaHJlYWQlMjIlM0ElNUIlNUQlMkMlMjJjb21tZW50c1Zpc2libGUlMjIlM0FmYWxzZSUyQyUyMnBhcmVudEhpZXJhcmNoeSUyMiUzQSU1QiU1RCUyQyUyMmRpZmZJbnNlcnRzJTIyJTNBJTVCJTVEJTJDJTIyZGlmZkRlbGV0ZXMlMjIlM0ElNUIlNUQlMkMlMjJnbG9iYWxWYXJzJTIyJTNBJTdCJTdEJTJDJTIybGF0ZXN0VXNlciUyMiUzQSUyMmElMjB1c2VyJTIyJTJDJTIybGF0ZXN0VXNlcklkJTIyJTNBbnVsbCUyQyUyMmxhdGVzdEFzc3VtZVJvbGVJbmZvJTIyJTNBbnVsbCUyQyUyMmNvbW1hbmRUaXRsZSUyMiUzQSUyMiUyMiUyQyUyMnNob3dDb21tYW5kVGl0bGUlMjIlM0FmYWxzZSUyQyUyMmhpZGVDb21tYW5kQ29kZSUyMiUzQWZhbHNlJTJDJTIyaGlkZUNvbW1hbmRSZXN1bHQlMjIlM0FmYWxzZSUyQyUyMmlzTG9ja2VkSW5FeGFtTW9kZSUyMiUzQWZhbHNlJTJDJTIyaVB5dGhvbk1ldGFkYXRhJTIyJTNBbnVsbCUyQyUyMm1ldGFkYXRhJTIyJTNBJTdCJTdEJTJDJTIyc3RyZWFtU3RhdGVzJTIyJTNBJTdCJTdEJTJDJTIyZGF0YXNldFByZXZpZXdOYW1lVG9DbWRJZE1hcCUyMiUzQSU3QiU3RCUyQyUyMnRhYmxlUmVzdWx0SW5kZXglMjIlM0FudWxsJTJDJTIybGlzdFJlc3VsdE1ldGFkYXRhJTIyJTNBJTVCJTVEJTJDJTIyc3ViY29tbWFuZE9wdGlvbnMlMjIlM0FudWxsJTJDJTIyY29udGVudFNoYTI1NkhleCUyMiUzQW51bGwlMkMlMjJ0YWJsZVJlc3VsdFNldHRpbmdzTWFwJTIyJTNBJTdCJTdEJTJDJTIybnVpZCUyMiUzQSUyMjU2YjAxOGQ3LWVkZWItNDdhNi05NDQxLWMzOGM5ZWFmOTVhMyUyMiU3RCU1RCUyQyUyMmRhc2hib2FyZHMlMjIlM0ElNUIlNUQlMkMlMjJndWlkJTIyJTNBJTIyJTIyJTJDJTIyZ2xvYmFsVmFycyUyMiUzQSU3QiU3RCUyQyUyMmlQeXRob25NZXRhZGF0YSUyMiUzQW51bGwlMkMlMjJpbnB1dFdpZGdldHMlMjIlM0ElN0IlN0QlMkMlMjJub3RlYm9va01ldGFkYXRhJTIyJTNBJTdCJTdEJTJDJTIycmVwb3NFeHBvcnRGb3JtYXQlMjIlM0ElMjJTT1VSQ0UlMjIlMkMlMjJlbnZpcm9ubWVudE1ldGFkYXRhJTIyJTNBbnVsbCUyQyUyMmNvbXB1dGVQcmVmZXJlbmNlcyUyMiUzQW51bGwlMkMlMjJpbnB1dFdpZGdldFByZWZlcmVuY2VzJTIyJTNBbnVsbCUyQyUyMmVudmlyb25tZW50U2VyaWFsaXphdGlvblByZWZlcmVuY2VzJTIyJTNBbnVsbCU3RA==';</script>
+
+</head>
+<body>  <script>
+window.addEventListener('load', function(event) {
+  if (window.mainJsLoadError) {
+    var u = 'https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/js/notebook-main.js';
+    var b = document.getElementsByTagName('body')[0];
+    var c = document.createElement('div');
+    c.innerHTML = ('<h1 class="error-static-notebook">Network Error</h1>' +
+      '<p><b>Please check your network connection and try again.</b></p>' +
+      '<p>Could not load a required resource: ' + u + '</p>');
+    c.style.margin = '30px';
+    c.style.padding = '20px 50px';
+    c.style.backgroundColor = '#f5f5f5';
+    c.style.borderRadius = '5px';
+    b.appendChild(c);
+  }
+});
+</script>
+<script
+ src="https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/js/notebook-main.js"
+ onerror="window.mainJsLoadError = true;"
+ charset="utf-8"></script>
+<script
+ src="https://databricks-prod-cloudfront.cloud.databricks.com/static/monolith-ui_2026-08-14_15.38.16Z_monolith-ui_r8923_9b6ecb5f_1853554391/js/metrics-graphics.js"
+ onerror="window.mainJsLoadError = true;"
+ charset="utf-8"></script>
+</body>
+</html>

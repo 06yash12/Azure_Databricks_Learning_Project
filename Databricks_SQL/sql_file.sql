@@ -1,0 +1,1 @@
+SELECT * FROM azuredatabricks_catalog.ldp_medallion.customers

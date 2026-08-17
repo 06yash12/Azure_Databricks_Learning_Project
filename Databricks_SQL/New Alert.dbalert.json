@@ -1,0 +1,19 @@
+{
+  "evaluation": {
+    "source": {
+      "name": "",
+      "display": "",
+      "aggregation": "AGGREGATION_UNSPECIFIED"
+    },
+    "comparison_operator": "EQUAL",
+    "threshold": {
+      "value": {
+        "string_value": "500000"
+      }
+    },
+    "notification": {}
+  },
+  "query_lines": [
+    "SELECT SUM(fare_amount) FROM azuredatabricks_catalog.ldp_medallion.fact"
+  ]
+}
