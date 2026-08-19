@@ -16,7 +16,7 @@ Hands-on project completed as part of the **Udemy course by Ansh Lamba (Databric
 | Certification | Verification |
 | --- | --- |
 | 🎓 Udemy — Azure Databricks Course Completion | [View Certificate](https://www.udemy.com/certificate/UC-b6511451-82d4-4bce-91de-867eb6910aa4/) |
-| 🏅 DP-700 — Microsoft Azure Databricks Data Engineer | [Verify Credential](https://learn.microsoft.com/en-us/users/1207yash/credentials/3e012f782a2f59fe) |
+| 🏅 DP-750 — Microsoft Azure Databricks Data Engineer | [Verify Credential](https://learn.microsoft.com/en-us/users/1207yash/credentials/3e012f782a2f59fe) |
 | 📄 Full Project Documentation | [Read Documentation](./Documentation.md) |
 
 ---
